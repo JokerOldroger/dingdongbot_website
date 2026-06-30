@@ -1,0 +1,490 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="DingDong RoBo 团队模块 - 具身智能与陪伴产品团队。"
+    />
+    <title>DingDong RoBo - 团队</title>
+    <link rel="icon" type="image/png" href="./public/assets/home/hero/logo-mark-white.png" />
+    <link rel="stylesheet" href="./src/styles/main.css" />
+    <style>
+      .team-page {
+        background: #6f4a82;
+      }
+
+      .team-page .site-shell {
+        min-height: 100vh;
+        background: #6f4a82;
+      }
+
+      .team-page .site-header {
+        position: absolute;
+        inset: 0 0 auto;
+        z-index: 20;
+        background: transparent;
+        color: #fff;
+        box-shadow: none;
+      }
+
+      .team-page .site-header.is-scrolled {
+        background: rgba(85, 49, 101, 0.4);
+        box-shadow: none;
+        backdrop-filter: blur(14px);
+      }
+
+      .team-page .brand,
+      .team-page .site-nav a,
+      .team-page .nav-toggle {
+        color: #fff;
+      }
+
+      .team-page .site-nav a.is-active {
+        border-bottom-color: rgba(255, 255, 255, 0.92);
+      }
+
+      .team-hero {
+        position: relative;
+        min-height: 100vh;
+        overflow: hidden;
+        background: #6f4a82;
+      }
+
+      .team-hero__bg,
+      .team-hero__floor,
+      .team-hero__wordmark,
+      .team-hero__robot {
+        position: absolute;
+        inset: auto;
+        pointer-events: none;
+      }
+
+      .team-hero__bg {
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .team-hero__wordmark {
+        left: 50%;
+        top: clamp(280px, 31vw, 420px);
+        width: min(142vw, 2000px);
+        transform: translateX(-50%);
+        opacity: 0.42;
+      }
+
+      .team-hero__robot {
+        left: 50%;
+        bottom: -2px;
+        width: min(72vw, 1120px);
+        transform: translateX(-50%);
+        z-index: 2;
+      }
+
+      .team-hero__floor {
+        left: 50%;
+        bottom: 0;
+        width: 100%;
+        height: min(34vh, 300px);
+        transform: translateX(-50%);
+        object-fit: cover;
+        mix-blend-mode: multiply;
+        opacity: 0.9;
+        z-index: 1;
+      }
+
+      .team-hero::after {
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0) 24%, rgba(58, 27, 73, 0.08) 100%),
+          linear-gradient(180deg, rgba(123, 89, 143, 0) 58%, rgba(83, 43, 102, 0.28) 100%);
+        content: "";
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .team-about {
+        background: #fff;
+        padding: clamp(64px, 6vw, 96px) 0 clamp(72px, 7vw, 110px);
+      }
+
+      .team-about__copy {
+        width: min(100%, 1200px);
+        margin: 0 auto;
+        padding: 0 24px;
+        text-align: center;
+      }
+
+      .team-about__copy p {
+        margin: 0;
+        color: rgba(124, 83, 136, 0.88);
+        font-size: clamp(18px, 1.28vw, 26px);
+        line-height: 1.9;
+      }
+
+      .team-about__copy p + p {
+        margin-top: clamp(24px, 2.5vw, 42px);
+      }
+
+      .team-about__media-wrap {
+        width: min(100%, 1923px);
+        margin: clamp(54px, 5vw, 82px) auto 0;
+        padding: 0 24px;
+      }
+
+      .team-about__media {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+      .team-join {
+        background: #fff;
+      }
+
+      .team-join__brand {
+        display: grid;
+        place-items: center;
+        padding: clamp(36px, 4vw, 62px) 24px clamp(28px, 3vw, 42px);
+      }
+
+      .team-join__brand img {
+        width: clamp(116px, 10vw, 176px);
+        height: auto;
+      }
+
+      .team-join__banner {
+        position: relative;
+        overflow: hidden;
+        min-height: clamp(280px, 24vw, 460px);
+        background: linear-gradient(180deg, #efe5f7 0%, #efe7f7 100%);
+      }
+
+      .team-join__banner-bg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.84;
+      }
+
+      .team-join__banner-inner {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        grid-template-columns: minmax(280px, 520px) minmax(360px, 1fr);
+        align-items: center;
+        gap: 20px;
+        width: min(100%, 1440px);
+        min-height: inherit;
+        margin: 0 auto;
+        padding: 0 clamp(24px, 6vw, 140px);
+      }
+
+      .team-join__copy {
+        color: #7c5b8d;
+      }
+
+      .team-join__copy h2 {
+        margin: 0;
+        font-size: clamp(34px, 2.9vw, 58px);
+        line-height: 1.2;
+        font-weight: 400;
+      }
+
+      .team-join__copy p {
+        margin: 16px 0 0;
+        color: rgba(124, 91, 141, 0.92);
+        font-size: clamp(14px, 1vw, 18px);
+        line-height: 1.8;
+      }
+
+      .team-join__robot {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        width: min(58vw, 820px);
+        max-width: none;
+      }
+
+      .team-join__contact {
+        display: grid;
+        place-items: center;
+        padding: clamp(44px, 5vw, 70px) 24px clamp(60px, 6vw, 86px);
+        background: #fff;
+        text-align: center;
+      }
+
+      .team-join__contact h3 {
+        margin: 0;
+        color: #7c5388;
+        font-size: clamp(34px, 2.6vw, 52px);
+        line-height: 1.2;
+        font-weight: 500;
+      }
+
+      .team-join__contact p {
+        margin: 14px 0 0;
+        color: rgba(124, 83, 136, 0.84);
+        font-size: clamp(15px, 1.1vw, 19px);
+        line-height: 1.7;
+      }
+
+      .team-join__wechat {
+        margin-top: 40px;
+      }
+
+      .team-join__wechat strong {
+        display: block;
+        margin-bottom: 18px;
+        color: #7c5388;
+        font-size: clamp(18px, 1.35vw, 24px);
+        font-weight: 500;
+      }
+
+      .team-join__qr {
+        position: relative;
+        width: clamp(112px, 8.5vw, 156px);
+        aspect-ratio: 1;
+        margin: 0 auto;
+        border: 8px solid #fff;
+        box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
+        background:
+          linear-gradient(90deg, #000 10%, transparent 10% 20%, #000 20% 30%, transparent 30% 40%, #000 40% 50%, transparent 50% 60%, #000 60% 70%, transparent 70% 80%, #000 80% 90%, transparent 90%),
+          linear-gradient(#000 10%, transparent 10% 20%, #000 20% 30%, transparent 30% 40%, #000 40% 50%, transparent 50% 60%, #000 60% 70%, transparent 70% 80%, #000 80% 90%, transparent 90%),
+          linear-gradient(135deg, #fff 0%, #fff 50%, #000 50%, #000 100%);
+        background-size: 18px 18px, 18px 18px, 100% 100%;
+        background-position: 0 0, 0 0, center;
+        background-color: #fff;
+      }
+
+      .team-join__qr::before,
+      .team-join__qr::after {
+        position: absolute;
+        width: 24px;
+        aspect-ratio: 1;
+        border: 4px solid #000;
+        background: #fff;
+        content: "";
+      }
+
+      .team-join__qr::before {
+        left: 10px;
+        top: 10px;
+      }
+
+      .team-join__qr::after {
+        right: 10px;
+        bottom: 10px;
+      }
+
+      @media (max-width: 720px) {
+        .team-page .site-nav {
+          background: rgba(83, 43, 102, 0.92);
+        }
+
+        .team-hero {
+          min-height: 740px;
+        }
+
+        .team-hero__wordmark {
+          top: 310px;
+          width: 220vw;
+          opacity: 0.3;
+        }
+
+        .team-hero__robot {
+          width: min(148vw, 760px);
+          bottom: -6px;
+        }
+
+        .team-hero__floor {
+          height: 180px;
+        }
+
+        .team-about {
+          padding-top: 44px;
+          padding-bottom: 54px;
+        }
+
+        .team-about__copy {
+          padding: 0 18px;
+        }
+
+        .team-about__copy p {
+          font-size: 16px;
+          line-height: 1.85;
+        }
+
+        .team-about__media-wrap {
+          margin-top: 36px;
+          padding: 0 0;
+        }
+
+        .team-join__banner {
+          min-height: 380px;
+        }
+
+        .team-join__banner-inner {
+          grid-template-columns: 1fr;
+          align-items: start;
+          padding: 0 20px;
+        }
+
+        .team-join__copy {
+          padding-top: 54px;
+        }
+
+        .team-join__robot {
+          right: -52px;
+          width: min(126vw, 620px);
+        }
+
+        .team-join__contact {
+          padding-left: 18px;
+          padding-right: 18px;
+        }
+      }
+    </style>
+  </head>
+  <body class="team-page">
+    <div class="site-shell">
+      <header class="site-header" data-site-header>
+        <a class="brand" href="./index.html#top" aria-label="返回 DingDong RoBo 首页">
+          <img class="brand__mark" src="./public/assets/home/hero/logo-mark-white.png" alt="" />
+          <span class="brand__text">
+            <span>DingDong</span>
+            <img src="./public/assets/home/hero/logo-subtitle-robo.png" alt="RoBo" />
+          </span>
+        </a>
+
+        <button class="nav-toggle" type="button" aria-label="打开导航" aria-expanded="false" data-nav-toggle>
+          <span></span>
+          <span></span>
+        </button>
+
+        <nav class="site-nav" aria-label="主导航" data-site-nav>
+          <a href="./function.html">功能</a>
+          <a href="./family.html">家庭</a>
+          <a href="./resources.html">资源</a>
+          <a class="is-active" href="./team.html">团队</a>
+        </nav>
+      </header>
+
+      <main id="top">
+        <section class="team-hero" aria-label="DingDong 团队首屏">
+          <img class="team-hero__bg" src="./public/assets/team/hero/team-gradient-bg.png" alt="" />
+          <img class="team-hero__wordmark" src="./public/assets/team/hero/team-wordmark.png" alt="" />
+          <img class="team-hero__floor" src="./public/assets/team/hero/team-floor.png" alt="" />
+          <img class="team-hero__robot" src="./public/assets/team/hero/team-robot.png" alt="DingDong 团队页机器人主视觉" />
+        </section>
+
+        <section class="team-about" aria-labelledby="team-about-title">
+          <h1 class="visually-hidden" id="team-about-title">团队介绍</h1>
+
+          <div class="team-about__copy reveal">
+            <p>深圳市雪而新技术成立于 2024 年 4 月，专注家庭垂类具身智能，定位“具身智能时代的迪士尼”。</p>
+            <p>
+              公司以 Oilover AI 潮玩为数据入口，以 DingDong 科教机器人为主力盈利产品，构建“硬件销售+内容订阅+IP生态”的商业模式。<br />
+              面向全球 4–15 岁儿童家庭，打造 IP 化 AI 陪伴 + 科教编程 双核心产品矩阵。
+            </p>
+            <p>
+              团队由清华、港科大、英国拉夫堡大学等名校硕博与消费品营销专家组成，落地能力极强，<br />
+              已完成产品原型、供应链落地、海内外订单验证。
+            </p>
+          </div>
+
+          <div class="team-about__media-wrap reveal">
+            <img class="team-about__media" src="./public/assets/team/about/team-about-scene.png" alt="DingDong 团队愿景与家庭乐园场景展示" />
+          </div>
+        </section>
+
+        <section class="team-join" aria-labelledby="team-join-title">
+          <div class="team-join__brand reveal">
+            <img src="./public/assets/team/join/team-logo-purple.png" alt="DingDong RoBo" />
+          </div>
+
+          <div class="team-join__banner">
+            <img class="team-join__banner-bg" src="./public/assets/team/join/team-banner-bg.png" alt="" />
+            <div class="team-join__banner-inner">
+              <div class="team-join__copy reveal">
+                <h2 id="team-join-title">Hi, DingDong</h2>
+                <p>“一个科教与陪伴双驱动的具身智能机器人”<br />一起追寻你心中的那道光</p>
+              </div>
+              <img class="team-join__robot reveal" src="./public/assets/team/join/team-banner-robot.png" alt="DingDong 加入团队横幅机器人" />
+            </div>
+          </div>
+
+          <div class="team-join__contact reveal">
+            <h3>加入团队</h3>
+            <p>联系我们</p>
+            <div class="team-join__wechat" aria-label="官方微信二维码">
+              <strong>官方微信</strong>
+              <div class="team-join__qr" aria-hidden="true"></div>
+            </div>
+          </div>
+        </section>
+
+        <footer class="site-footer" id="team" aria-labelledby="team-footer-title">
+          <img class="site-footer__bg" src="./public/assets/home/footer/footer-bg.png" alt="" />
+          <h2 class="visually-hidden" id="team-footer-title">网站页脚信息</h2>
+
+          <div class="site-footer__inner">
+            <nav class="footer-links reveal" aria-label="页脚导航">
+              <section>
+                <h3>支持</h3>
+                <a href="#docs">文档中心</a>
+                <a href="#downloads">下载中心</a>
+                <a href="#video">视频中心</a>
+                <a href="#service">售后服务</a>
+                <a href="#knowledge">知识库</a>
+              </section>
+              <section>
+                <h3>新闻</h3>
+                <a href="#products">产品</a>
+                <a href="#press">报道</a>
+                <a href="#events">活动</a>
+                <a href="#more">更多</a>
+              </section>
+              <section>
+                <h3>关于我们</h3>
+                <a href="#about">公司介绍</a>
+                <a href="#tech">核心技术</a>
+                <a href="#investors">投资者关系</a>
+                <a href="#awards">荣誉奖项</a>
+                <a href="#careers">加入我们</a>
+              </section>
+              <section class="footer-contact">
+                <h3>联系我们</h3>
+                <p>联系电话：123123123123</p>
+                <p>官方邮箱：2919145785@qq.com</p>
+                <p>官方微信：Aimaker_</p>
+                <p>公司地址：广东省深圳市南山区南山云谷<br />创新产业园 2 期 3 栋 413</p>
+              </section>
+            </nav>
+
+            <div class="site-footer__divider" aria-hidden="true"></div>
+
+            <div class="site-footer__bottom reveal">
+              <a class="footer-brand" href="./index.html#top" aria-label="返回 DingDong 首页">
+                <img src="./public/assets/home/hero/logo-mark-white.png" alt="" />
+                <span>
+                  <strong>DingDong</strong>
+                  <small>RoBo</small>
+                </span>
+              </a>
+              <p>Copyright © 2025 LimX Dynamics Technology Co., Ltd. 粤ICP备2022145040号粤公网安备44030002003539号</p>
+            </div>
+          </div>
+        </footer>
+      </main>
+    </div>
+
+    <script type="module" src="./src/scripts/main.js"></script>
+  </body>
+</html>

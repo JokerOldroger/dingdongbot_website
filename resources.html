@@ -1,0 +1,602 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="DingDong RoBo 资源模块 - 了解品牌愿景与智能陪伴生态。"
+    />
+    <title>DingDong RoBo - 资源</title>
+    <link rel="icon" type="image/png" href="./public/assets/home/hero/logo-mark-white.png" />
+    <link rel="stylesheet" href="./src/styles/main.css" />
+    <style>
+      .resources-page {
+        background: #090610;
+      }
+
+      .resources-page .site-shell {
+        min-height: 100vh;
+        background: #090610;
+      }
+
+      .resources-page .site-header {
+        position: absolute;
+        inset: 0 0 auto;
+        z-index: 20;
+        background: transparent;
+        color: #fff;
+        box-shadow: none;
+      }
+
+      .resources-page .site-header.is-scrolled {
+        background: rgba(8, 5, 16, 0.72);
+        box-shadow: none;
+        backdrop-filter: blur(14px);
+      }
+
+      .resources-page .brand,
+      .resources-page .site-nav a,
+      .resources-page .nav-toggle {
+        color: #fff;
+      }
+
+      .resources-page .site-nav a.is-active {
+        border-bottom-color: rgba(255, 255, 255, 0.92);
+      }
+
+      .resources-hero {
+        position: relative;
+        min-height: min(100vh, 1081px);
+        overflow: hidden;
+        background: #0a0814;
+      }
+
+      .resources-hero__bg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .resources-hero::after {
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(90deg, rgba(8, 6, 15, 0.38) 0%, rgba(8, 6, 15, 0.16) 24%, rgba(8, 6, 15, 0.02) 44%, rgba(8, 6, 15, 0.14) 100%),
+          linear-gradient(180deg, rgba(5, 4, 12, 0.08) 0%, rgba(5, 4, 12, 0) 45%, rgba(5, 4, 12, 0.22) 100%);
+        content: "";
+        pointer-events: none;
+      }
+
+      .resources-hero__copy {
+        position: absolute;
+        left: clamp(56px, 6vw, 120px);
+        top: 50%;
+        z-index: 2;
+        width: min(420px, 32vw);
+        transform: translateY(-18%);
+        color: #fff;
+      }
+
+      .resources-hero__copy h1 {
+        margin: 0;
+        font-size: clamp(44px, 4.1vw, 76px);
+        line-height: 1.04;
+        font-weight: 600;
+      }
+
+      .resources-hero__copy p {
+        margin: 12px 0 0;
+        color: rgba(255, 255, 255, 0.8);
+        font-size: clamp(14px, 1vw, 18px);
+        line-height: 1.65;
+      }
+
+      .resources-vision {
+        position: relative;
+        overflow: hidden;
+        margin-top: -2px;
+        background:
+          linear-gradient(180deg, #05050a 0%, #06060a 22%, #040408 52%, #030308 100%);
+      }
+
+      .resources-vision__bg-top,
+      .resources-vision__bg-mid,
+      .resources-vision__bg-bottom {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        pointer-events: none;
+      }
+
+      .resources-vision__bg-top {
+        top: 0;
+        height: clamp(120px, 10vw, 206px);
+        object-fit: cover;
+        opacity: 0;
+      }
+
+      .resources-vision__bg-mid {
+        top: clamp(118px, 10vw, 186px);
+        height: clamp(260px, 26vw, 480px);
+        object-fit: cover;
+        opacity: 0;
+      }
+
+      .resources-vision__bg-bottom {
+        bottom: 0;
+        height: clamp(240px, 25vw, 435px);
+        object-fit: cover;
+        opacity: 0;
+      }
+
+      .resources-vision__arc {
+        position: absolute;
+        left: 50%;
+        top: clamp(180px, 17vw, 320px);
+        width: min(82vw, 1574px);
+        transform: translateX(-50%);
+        opacity: 0.26;
+        pointer-events: none;
+      }
+
+      .resources-vision__inner {
+        position: relative;
+        z-index: 1;
+        width: min(100%, 1920px);
+        margin: 0 auto;
+        padding: clamp(68px, 6vw, 108px) 0 0;
+      }
+
+      .resources-vision__heading {
+        width: min(100%, 980px);
+        margin: 0 auto;
+        padding: 0 24px;
+        text-align: center;
+        color: #fff;
+      }
+
+      .resources-vision__heading h2 {
+        margin: 0;
+        font-size: clamp(42px, 3.4vw, 64px);
+        line-height: 1.16;
+        font-weight: 600;
+      }
+
+      .resources-vision__heading h3 {
+        margin: 18px 0 0;
+        font-size: clamp(20px, 1.8vw, 32px);
+        line-height: 1.4;
+        font-weight: 400;
+        color: rgba(255, 255, 255, 0.88);
+      }
+
+      .resources-vision__heading p {
+        width: min(100%, 760px);
+        margin: 34px auto 0;
+        color: rgba(255, 255, 255, 0.58);
+        font-size: clamp(14px, 1vw, 18px);
+        line-height: 1.8;
+      }
+
+      .resources-vision__scene-wrap {
+        position: relative;
+        margin-top: clamp(38px, 3vw, 58px);
+      }
+
+      .resources-vision__scene {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+      .resources-vision__dream {
+        position: absolute;
+        left: 50%;
+        bottom: clamp(88px, 8vw, 148px);
+        transform: translateX(-50%);
+        width: min(90vw, 980px);
+        padding: 0 24px;
+        text-align: center;
+        color: #fff;
+      }
+
+      .resources-vision__dream strong {
+        display: block;
+        font-size: clamp(22px, 1.75vw, 34px);
+        line-height: 1.4;
+        font-weight: 500;
+      }
+
+      .resources-vision__dream p {
+        margin: 22px auto 0;
+        max-width: 920px;
+        color: rgba(255, 255, 255, 0.84);
+        font-size: clamp(16px, 1.15vw, 22px);
+        line-height: 1.8;
+      }
+
+      .resources-brand {
+        background: #fff;
+        color: #7c5388;
+      }
+
+      .resources-brand__heading,
+      .resources-mbti__heading {
+        width: min(100%, 920px);
+        margin: 0 auto;
+        padding: clamp(52px, 5vw, 76px) 24px 34px;
+        text-align: center;
+      }
+
+      .resources-brand__heading h2,
+      .resources-mbti__heading h2 {
+        margin: 0;
+        font-size: clamp(28px, 2.5vw, 46px);
+        line-height: 1.2;
+        font-weight: 600;
+        color: #7c5388;
+      }
+
+      .resources-brand__heading p,
+      .resources-mbti__heading p {
+        margin: 14px 0 0;
+        color: rgba(124, 83, 136, 0.88);
+        font-size: clamp(14px, 1vw, 18px);
+        line-height: 1.75;
+      }
+
+      .resources-brand__stage {
+        position: relative;
+        width: min(100%, 1920px);
+        margin: 0 auto;
+        background: linear-gradient(180deg, #f7f4f2 0%, #f6f3f0 100%);
+      }
+
+      .resources-brand__logo {
+        position: absolute;
+        right: clamp(26px, 3vw, 56px);
+        top: clamp(22px, 2.2vw, 40px);
+        width: clamp(96px, 9vw, 164px);
+        z-index: 1;
+      }
+
+      .resources-brand__hero {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+      .resources-brand__note {
+        width: min(100%, 980px);
+        margin: 0 auto;
+        padding: 18px 24px 30px;
+        text-align: center;
+      }
+
+      .resources-brand__note p {
+        margin: 0;
+        color: rgba(114, 101, 111, 0.8);
+        font-size: clamp(12px, 0.92vw, 16px);
+        line-height: 1.75;
+      }
+
+      .resources-mbti {
+        background: #fff;
+        padding-bottom: clamp(64px, 7vw, 108px);
+      }
+
+      .resources-mbti__board-wrap {
+        width: min(100%, 1920px);
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      .resources-mbti__board {
+        display: block;
+        width: min(100%, 1840px);
+        margin: 0 auto;
+        height: auto;
+      }
+
+      .resources-channel {
+        background: #fff;
+        padding-bottom: clamp(72px, 7vw, 112px);
+      }
+
+      .resources-channel__heading {
+        width: min(100%, 1120px);
+        margin: 0 auto;
+        padding: clamp(48px, 5vw, 76px) 24px 30px;
+        text-align: center;
+      }
+
+      .resources-channel__heading h2 {
+        margin: 0;
+        font-size: clamp(30px, 2.6vw, 48px);
+        line-height: 1.2;
+        font-weight: 600;
+        color: #7c5388;
+      }
+
+      .resources-channel__heading p {
+        margin: 16px auto 0;
+        max-width: 1080px;
+        color: rgba(124, 83, 136, 0.88);
+        font-size: clamp(14px, 1vw, 18px);
+        line-height: 1.85;
+      }
+
+      .resources-channel__media-wrap {
+        width: min(100%, 1725px);
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      .resources-channel__media {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+      @media (max-width: 720px) {
+        .resources-page .site-nav {
+          background: rgba(10, 8, 20, 0.9);
+        }
+
+        .resources-hero {
+          min-height: 720px;
+        }
+
+        .resources-hero__bg {
+          object-position: 58% center;
+        }
+
+        .resources-hero__copy {
+          left: 24px;
+          top: 170px;
+          width: min(calc(100% - 48px), 320px);
+          transform: none;
+        }
+
+        .resources-hero__copy h1 {
+          font-size: clamp(34px, 10vw, 46px);
+        }
+
+        .resources-vision__heading h2 {
+          font-size: clamp(34px, 9vw, 44px);
+        }
+
+        .resources-vision__heading h3 {
+          font-size: clamp(18px, 5vw, 24px);
+        }
+
+        .resources-vision__heading p {
+          margin-top: 24px;
+        }
+
+        .resources-vision__arc {
+          top: 240px;
+          width: 140vw;
+          max-width: none;
+        }
+
+        .resources-vision__dream {
+          bottom: 42px;
+        }
+
+        .resources-vision__dream p {
+          margin-top: 16px;
+          font-size: 14px;
+          line-height: 1.7;
+        }
+
+        .resources-brand__heading,
+        .resources-mbti__heading {
+          padding-top: 42px;
+          padding-bottom: 24px;
+        }
+
+        .resources-brand__logo {
+          right: 18px;
+          top: 18px;
+          width: 84px;
+        }
+
+        .resources-brand__note {
+          padding-top: 14px;
+          padding-bottom: 24px;
+        }
+
+        .resources-mbti {
+          padding-bottom: 56px;
+        }
+
+        .resources-mbti__board-wrap {
+          padding: 0 12px;
+        }
+
+        .resources-channel {
+          padding-bottom: 56px;
+        }
+
+        .resources-channel__heading {
+          padding-top: 40px;
+          padding-bottom: 22px;
+        }
+
+        .resources-channel__media-wrap {
+          padding: 0 12px;
+        }
+      }
+    </style>
+  </head>
+  <body class="resources-page">
+    <div class="site-shell">
+      <header class="site-header" data-site-header>
+        <a class="brand" href="./index.html#top" aria-label="返回 DingDong RoBo 首页">
+          <img class="brand__mark" src="./public/assets/home/hero/logo-mark-white.png" alt="" />
+          <span class="brand__text">
+            <span>DingDong</span>
+            <img src="./public/assets/home/hero/logo-subtitle-robo.png" alt="RoBo" />
+          </span>
+        </a>
+
+        <button class="nav-toggle" type="button" aria-label="打开导航" aria-expanded="false" data-nav-toggle>
+          <span></span>
+          <span></span>
+        </button>
+
+        <nav class="site-nav" aria-label="主导航" data-site-nav>
+          <a href="./function.html">功能</a>
+          <a href="./family.html">家庭</a>
+          <a class="is-active" href="./resources.html">资源</a>
+          <a href="./team.html">团队</a>
+        </nav>
+      </header>
+
+      <main id="top">
+        <section class="resources-hero" aria-labelledby="resources-title">
+          <img class="resources-hero__bg" src="./public/assets/resources/hero/resources-hero-bg.png" alt="" />
+          <div class="resources-hero__copy reveal">
+            <h1 id="resources-title">资源</h1>
+            <p>我们整理了丰富的资源，帮助你更好地了解 DingDong</p>
+          </div>
+        </section>
+
+        <section class="resources-vision" aria-labelledby="vision-title">
+          <img class="resources-vision__bg-top" src="./public/assets/resources/vision/vision-bg-top.png" alt="" />
+          <img class="resources-vision__bg-mid" src="./public/assets/resources/vision/vision-bg-mid.png" alt="" />
+          <img class="resources-vision__bg-bottom" src="./public/assets/resources/vision/vision-bg-bottom.png" alt="" />
+          <img class="resources-vision__arc" src="./public/assets/resources/vision/vision-arc.png" alt="" />
+
+          <div class="resources-vision__inner">
+            <header class="resources-vision__heading reveal">
+              <h2 id="vision-title">公司愿景</h2>
+              <h3>全球智能陪伴娱乐生态领跑者</h3>
+              <p>
+                面向全球中产及高净值家庭，打造“家庭沉浸式童趣中心”，<br />
+                旨在解决传统玩具缺乏生命周期、陪伴形式单一、难以构建持续情感联结的行业痛点。
+              </p>
+            </header>
+
+            <div class="resources-vision__scene-wrap">
+              <img class="resources-vision__scene" src="./public/assets/resources/vision/vision-scene.png" alt="DingDong 机器人与智能陪伴生态场景" />
+              <div class="resources-vision__dream reveal">
+                <strong>每个儿时的梦想</strong>
+                <p>我们希望打造世界第一个机器人角色乐园，具身智能版的迪士尼乐园</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="resources-brand" aria-labelledby="brand-ecosystem-title">
+          <header class="resources-brand__heading reveal">
+            <h2 id="brand-ecosystem-title">品牌生态</h2>
+            <p>
+              从 Oilover AI 潮玩到 DingDong 具身智能机器人，<br />
+              团队正在构建由高频互动产品、数据引擎与高价值机器人产品组成的智能陪伴生态。
+            </p>
+          </header>
+
+          <div class="resources-brand__stage">
+            <img class="resources-brand__logo" src="./public/assets/resources/brand/oilover-logo.png" alt="Oilover AI" />
+            <img class="resources-brand__hero" src="./public/assets/resources/brand/brand-ecology-hero.png" alt="Oilover AI 猫咪宠物品牌生态展示" />
+          </div>
+
+          <div class="resources-brand__note reveal">
+            <p>
+              我们通过 Duomi 低成本、高频交互、收集 2 万+ 用户的多模态情感数据，<br />
+              通过这些数据训练强化和喂养 DingDong 的价值、复杂场景，实现真正的具身智能。
+            </p>
+          </div>
+        </section>
+
+        <section class="resources-mbti" aria-labelledby="mbti-title">
+          <header class="resources-mbti__heading reveal">
+            <h2 id="mbti-title">Duomi: “MBTI 十六人格” AI 猫咪宠物</h2>
+            <p>
+              依托 Oilover AI 生物性格拟态体系生成的产品层反馈，<br />
+              进一步丰富了 DingDong 数据库的数据维度。
+            </p>
+          </header>
+
+          <div class="resources-mbti__board-wrap reveal">
+            <img class="resources-mbti__board" src="./public/assets/resources/mbti/mbti-pets-board.png" alt="MBTI Pets 猫咪人格图谱与角色展示" />
+          </div>
+        </section>
+
+        <section class="resources-channel" aria-labelledby="channel-title">
+          <header class="resources-channel__heading reveal">
+            <h2 id="channel-title">渠道落地</h2>
+            <p>
+              项目从前期用户调研与产品研发发起步，同步并行供应链落地和市场推广两大筹备板块，<br />
+              待各项前置工作全部就绪后再启动批量生产、质检打包与发货交付，全程依托深圳珠海自有 3C 工厂完成产品从设计到出货的完整落地。
+            </p>
+          </header>
+
+          <div class="resources-channel__media-wrap reveal">
+            <img class="resources-channel__media" src="./public/assets/resources/channel/channel-building.png" alt="渠道落地与供应链能力展示建筑场景" />
+          </div>
+        </section>
+
+        <footer class="site-footer" id="team" aria-labelledby="resources-footer-title">
+          <img class="site-footer__bg" src="./public/assets/home/footer/footer-bg.png" alt="" />
+          <h2 class="visually-hidden" id="resources-footer-title">网站页脚信息</h2>
+
+          <div class="site-footer__inner">
+            <nav class="footer-links reveal" aria-label="页脚导航">
+              <section>
+                <h3>支持</h3>
+                <a href="#docs">文档中心</a>
+                <a href="#downloads">下载中心</a>
+                <a href="#video">视频中心</a>
+                <a href="#service">售后服务</a>
+                <a href="#knowledge">知识库</a>
+              </section>
+              <section>
+                <h3>新闻</h3>
+                <a href="#products">产品</a>
+                <a href="#press">报道</a>
+                <a href="#events">活动</a>
+                <a href="#more">更多</a>
+              </section>
+              <section>
+                <h3>关于我们</h3>
+                <a href="#about">公司介绍</a>
+                <a href="#tech">核心技术</a>
+                <a href="#investors">投资者关系</a>
+                <a href="#awards">荣誉奖项</a>
+                <a href="#careers">加入我们</a>
+              </section>
+              <section class="footer-contact">
+                <h3>联系我们</h3>
+                <p>联系电话：123123123123</p>
+                <p>官方邮箱：2919145785@qq.com</p>
+                <p>官方微信：Aimaker_</p>
+                <p>公司地址：广东省深圳市南山区南山云谷<br />创新产业园 2 期 3 栋 413</p>
+              </section>
+            </nav>
+
+            <div class="site-footer__divider" aria-hidden="true"></div>
+
+            <div class="site-footer__bottom reveal">
+              <a class="footer-brand" href="./index.html#top" aria-label="返回 DingDong 首页">
+                <img src="./public/assets/home/hero/logo-mark-white.png" alt="" />
+                <span>
+                  <strong>DingDong</strong>
+                  <small>RoBo</small>
+                </span>
+              </a>
+              <p>Copyright © 2025 LimX Dynamics Technology Co., Ltd. 粤ICP备2022145040号粤公网安备44030002003539号</p>
+            </div>
+          </div>
+        </footer>
+      </main>
+    </div>
+
+    <script type="module" src="./src/scripts/main.js"></script>
+  </body>
+</html>

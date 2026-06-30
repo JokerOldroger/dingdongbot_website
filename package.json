@@ -1,0 +1,47 @@
+{
+  "name": "dingdong-interactive-site",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Interactive responsive website prototype for DingDong RoBo.",
+  "main": "electron/main.js",
+  "scripts": {
+    "start": "python3 -m http.server 5173",
+    "serve": "python3 -m http.server 5173",
+    "icon:win": "node ./build/make-icon.mjs",
+    "electron:dev": "npm run icon:win && env -u ELECTRON_RUN_AS_NODE electron .",
+    "dist:win": "npm run icon:win && electron-builder --win nsis portable --x64"
+  },
+  "build": {
+    "appId": "com.dingdong.interactive-site",
+    "productName": "DingDong Interactive Site",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "electron/**/*",
+      "*.html",
+      "src/**/*",
+      "public/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ],
+      "icon": "build/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "DingDong Interactive Site"
+    }
+  },
+  "devDependencies": {
+    "electron": "^43.0.0",
+    "electron-builder": "^26.15.3",
+    "png-to-ico": "^3.0.1"
+  }
+}

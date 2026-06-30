@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="DingDong RoBo 功能模块 - 会移动、会回应、会表达。"
+    />
+    <title>DingDong RoBo - 功能</title>
+    <link rel="icon" type="image/png" href="./public/assets/home/hero/logo-mark-white.png" />
+    <link rel="stylesheet" href="./src/styles/main.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header" data-site-header>
+        <a class="brand" href="./index.html#top" aria-label="返回 DingDong RoBo 首页">
+          <img class="brand__mark" src="./public/assets/home/hero/logo-mark-white.png" alt="" />
+          <span class="brand__text">
+            <span>DingDong</span>
+            <img src="./public/assets/home/hero/logo-subtitle-robo.png" alt="RoBo" />
+          </span>
+        </a>
+
+        <button class="nav-toggle" type="button" aria-label="打开导航" aria-expanded="false" data-nav-toggle>
+          <span></span>
+          <span></span>
+        </button>
+
+        <nav class="site-nav" aria-label="主导航" data-site-nav>
+          <a class="is-active" href="./function.html">功能</a>
+          <a href="./family.html">家庭</a>
+          <a href="./resources.html">资源</a>
+          <a href="./team.html">团队</a>
+        </nav>
+      </header>
+
+      <main id="top">
+        <section class="function-hero" id="function-hero" aria-labelledby="function-title">
+          <img class="function-hero__bg" src="./public/assets/function/hero/function-hero-bg.png" alt="" />
+          <div class="function-hero__content reveal">
+            <h1 id="function-title">会移动、会回应、会表达</h1>
+            <p>DingDong 将具身交互带进家庭生活，陪伴每一个日常</p>
+            <div class="function-hero__features" aria-label="核心功能">
+              <span>
+                <img src="./public/assets/function/hero/icon-voice.png" alt="" />
+                语音交互
+              </span>
+              <span>
+                <img src="./public/assets/function/hero/icon-emotion.png" alt="" />
+                情绪表达
+              </span>
+              <span>
+                <img src="./public/assets/function/hero/icon-space.png" alt="" />
+                空间移动
+              </span>
+            </div>
+            <a class="function-hero__cta" href="#function-detail">
+              探索更多功能
+              <img src="./public/assets/function/hero/icon-arrow.png" alt="" />
+            </a>
+          </div>
+        </section>
+
+        <section class="function-story" id="function-detail" aria-label="DingDong 功能详情">
+          <div class="function-story__stack">
+            <article class="function-panel function-panel--voice">
+              <img class="function-panel__bg" src="./public/assets/function/story/story-bg-voice.png" alt="" />
+              <img class="function-panel__media function-panel__media--voice" src="./public/assets/function/story/robot-voice.png" alt="DingDong 正面机器人" />
+              <div class="function-panel__copy function-panel__copy--right">
+                <h2>AI 情感语音多模态</h2>
+                <p>理解语义与情绪，多模态融合，交流更自然。</p>
+                <small>Semantic, emotional comprehension, multimodal fusion for natural conversations.</small>
+              </div>
+            </article>
+
+            <article class="function-panel function-panel--motion">
+              <img class="function-panel__bg" src="./public/assets/function/story/story-bg-motion.png" alt="" />
+              <img class="function-panel__media function-panel__media--motion" src="./public/assets/function/story/robot-motion.png" alt="DingDong 底盘局部" />
+              <div class="function-panel__copy function-panel__copy--left">
+                <h2>运动控制</h2>
+                <p>精准控制底盘与姿态，在家中自由移动与避障。</p>
+                <small>Accurate chassis and posture control for free indoor movement and obstacle evasion.</small>
+              </div>
+            </article>
+
+            <article class="function-panel function-panel--emotion">
+              <img class="function-panel__bg" src="./public/assets/function/story/story-bg-emotion.png" alt="" />
+              <img class="function-panel__media function-panel__media--emotion" src="./public/assets/function/story/robot-emotion.png" alt="DingDong 表情机器人" />
+              <div class="function-panel__copy function-panel__copy--right">
+                <h2>情绪表达联动</h2>
+                <p>眨眼、灯光与动作联动，让情绪可见、可感、可回应。</p>
+                <small>Linked facial screen, lighting and movements to visualize, convey and respond to emotions.</small>
+              </div>
+            </article>
+
+            <article class="function-panel function-panel--accessory">
+              <img class="function-panel__bg" src="./public/assets/function/story/story-bg-accessory.png" alt="" />
+              <img class="function-panel__media function-panel__media--accessory" src="./public/assets/function/story/robot-accessory.png" alt="多台 DingDong 装扮机器人" />
+              <div class="function-panel__copy function-panel__copy--left">
+                <h2>个性装扮配件</h2>
+                <p>丰富配件与装扮，打造独一无二的 DingDong。</p>
+                <small>A wide range of accessories and skins to craft your one-of-a-kind DingDong.</small>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="function-detail" aria-label="DingDong 结构与体验细节">
+          <img class="function-detail__bg" src="./public/assets/function/detail/detail-bg.png" alt="" />
+          <img class="function-detail__floor" src="./public/assets/function/detail/detail-floor.png" alt="" />
+
+          <div class="function-detail__robot-wrap">
+            <img class="function-detail__robot" src="./public/assets/function/detail/detail-robot.png" alt="DingDong 正面结构展示" />
+            <img class="function-detail__reflection" src="./public/assets/function/detail/detail-robot-reflection.png" alt="" />
+
+            <div class="detail-callout detail-callout--top-left">
+              <span>状态显示灯</span>
+              <i></i>
+            </div>
+            <div class="detail-callout detail-callout--mid-left">
+              <span>部件固定轴</span>
+              <i></i>
+            </div>
+            <div class="detail-callout detail-callout--low-left">
+              <span>红外传感器</span>
+              <i></i>
+            </div>
+            <div class="detail-callout detail-callout--top-right">
+              <span>交互显示屏</span>
+              <i></i>
+            </div>
+            <div class="detail-callout detail-callout--mid-right">
+              <span>产品开关按钮</span>
+              <i></i>
+            </div>
+            <div class="detail-callout detail-callout--low-right">
+              <span>转向辅助轮</span>
+              <i></i>
+            </div>
+          </div>
+
+          <div class="function-detail__cards">
+            <article class="detail-card">
+              <img src="./public/assets/function/detail/detail-card-1.png" alt="" />
+              <div>
+                <h2>更自然的回应</h2>
+                <p>AI 理解更深，语音更拟人，每一次对话都更懂你。</p>
+              </div>
+            </article>
+            <article class="detail-card">
+              <img src="./public/assets/function/detail/detail-card-2.png" alt="" />
+              <div>
+                <h2>更真实的陪伴</h2>
+                <p>情绪可感、动作可见，让陪伴更有温度。</p>
+              </div>
+            </article>
+            <article class="detail-card">
+              <img src="./public/assets/function/detail/detail-card-3.png" alt="" />
+              <div>
+                <h2>更柔和的设计</h2>
+                <p>圆润造型与柔和配色，融入家庭每个角落。</p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <footer class="site-footer" id="team" aria-labelledby="function-footer-title">
+          <img class="site-footer__bg" src="./public/assets/home/footer/footer-bg.png" alt="" />
+          <h2 class="visually-hidden" id="function-footer-title">网站页脚信息</h2>
+
+          <div class="site-footer__inner">
+            <nav class="footer-links reveal" aria-label="页脚导航">
+              <section>
+                <h3>支持</h3>
+                <a href="#docs">文档中心</a>
+                <a href="#downloads">下载中心</a>
+                <a href="#video">视频中心</a>
+                <a href="#service">售后服务</a>
+                <a href="#knowledge">知识库</a>
+              </section>
+              <section>
+                <h3>新闻</h3>
+                <a href="#products">产品</a>
+                <a href="#press">报道</a>
+                <a href="#events">活动</a>
+                <a href="#more">更多</a>
+              </section>
+              <section>
+                <h3>关于我们</h3>
+                <a href="#about">公司介绍</a>
+                <a href="#tech">核心技术</a>
+                <a href="#investors">投资者关系</a>
+                <a href="#awards">荣誉奖项</a>
+                <a href="#careers">加入我们</a>
+              </section>
+              <section class="footer-contact">
+                <h3>联系我们</h3>
+                <p>联系电话：123123123123</p>
+                <p>官方邮箱：2919145785@qq.com</p>
+                <p>官方微信：Aimaker_</p>
+                <p>公司地址：广东省深圳市南山区南山云谷<br />创新产业园 2 期 3 栋 413</p>
+              </section>
+            </nav>
+
+            <div class="site-footer__divider" aria-hidden="true"></div>
+
+            <div class="site-footer__bottom reveal">
+              <a class="footer-brand" href="./index.html#top" aria-label="返回 DingDong 首页">
+                <img src="./public/assets/home/hero/logo-mark-white.png" alt="" />
+                <span>
+                  <strong>DingDong</strong>
+                  <small>RoBo</small>
+                </span>
+              </a>
+              <p>Copyright © 2025 LimX Dynamics Technology Co., Ltd. 粤ICP备2022145040号粤公网安备44030002003539号</p>
+            </div>
+          </div>
+        </footer>
+      </main>
+    </div>
+
+    <script type="module" src="./src/scripts/main.js"></script>
+  </body>
+</html>

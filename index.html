@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="DingDong RoBo - 科教与陪伴双驱动的儿童具身智能机器人。"
+    />
+    <title>DingDong RoBo</title>
+    <link rel="icon" type="image/png" href="./public/assets/home/hero/logo-mark-white.png" />
+    <link rel="stylesheet" href="./src/styles/main.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header" data-site-header>
+        <a class="brand" href="#top" aria-label="DingDong RoBo 首页">
+          <img class="brand__mark" src="./public/assets/home/hero/logo-mark-white.png" alt="" />
+          <span class="brand__text">
+            <span>DingDong</span>
+            <img src="./public/assets/home/hero/logo-subtitle-robo.png" alt="RoBo" />
+          </span>
+        </a>
+
+        <button class="nav-toggle" type="button" aria-label="打开导航" aria-expanded="false" data-nav-toggle>
+          <span></span>
+          <span></span>
+        </button>
+
+        <nav class="site-nav" aria-label="主导航" data-site-nav>
+          <a href="./function.html">功能</a>
+          <a href="./family.html">家庭</a>
+          <a href="./resources.html">资源</a>
+          <a href="./team.html">团队</a>
+        </nav>
+      </header>
+
+      <main id="top">
+        <section class="hero" aria-labelledby="hero-title" data-hero>
+          <img class="hero__gradient" src="./public/assets/home/hero/hero-gradient.png" alt="" />
+          <img class="hero__floor" src="./public/assets/home/hero/hero-floor-glow.png" alt="" />
+
+          <div class="hero__content" data-parallax="content">
+            <h1 id="hero-title">DingDong</h1>
+            <p class="hero__lead">科教与陪伴双驱动的儿童具身智能机器人</p>
+            <div class="hero__actions" aria-label="首页操作">
+              <a class="button button--primary" href="./function.html">探索功能</a>
+              <a class="button button--ghost" href="#video">观看视频</a>
+            </div>
+          </div>
+
+          <div class="hero__visual" data-parallax="robot">
+            <img src="./public/assets/home/hero/dingdong-robot-hero.png" alt="DingDong 紫色儿童陪伴机器人" />
+          </div>
+
+          <a class="scroll-cue" href="#features" aria-label="滚动到功能内容">
+            <span></span>
+          </a>
+        </section>
+
+        <section class="intro-scene" id="features" aria-labelledby="features-title">
+          <img class="intro-scene__bg" src="./public/assets/home/intro/intro-gradient-bg.png" alt="" />
+
+          <div class="intro-scene__copy reveal">
+            <h2 id="features-title">Hi~</h2>
+            <p>一台会听、会动、会表达的<br />家庭陪伴机器人</p>
+          </div>
+
+          <div class="intro-scene__robot reveal">
+            <img src="./public/assets/home/intro/dingdong-front.png" alt="DingDong 正面家庭陪伴机器人" />
+          </div>
+
+          <div class="intro-scene__features reveal" aria-label="DingDong 功能亮点">
+            <img class="intro-scene__divider" src="./public/assets/home/intro/intro-divider.png" alt="" />
+            <ul data-feature-list>
+              <li class="is-active" tabindex="0" data-feature-item>语音交互</li>
+              <li tabindex="0" data-feature-item>视觉感知</li>
+              <li tabindex="0" data-feature-item>运动控制</li>
+              <li tabindex="0" data-feature-item>情绪表达</li>
+              <li tabindex="0" data-feature-item>可更换耳部配件</li>
+              <li tabindex="0" data-feature-item>亲和外观设计</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="video-showcase" id="video" aria-labelledby="video-title">
+          <div class="video-showcase__brand reveal" aria-label="DingDong RoBo">
+            <img src="./public/assets/home/video/logo-mark-purple.png" alt="" />
+            <p>追寻你心中的那道光</p>
+          </div>
+
+          <div class="video-showcase__band">
+            <img class="video-showcase__band-bg" src="./public/assets/home/video/video-band-bg.png" alt="" />
+            <div class="video-showcase__slot reveal" aria-label="宣传视频占位">
+              <img src="./public/assets/home/video/video-placeholder-art.png" alt="" />
+              <span>VIDEO</span>
+            </div>
+          </div>
+
+          <div class="video-showcase__copy reveal">
+            <h2 id="video-title">让 AI 陪伴真正进入家庭日常</h2>
+            <p>
+              我们希望打造面向儿童与家庭的智能陪伴生态，<br />
+              让科技不只是工具，而是可以理解、回应和陪伴成长的伙伴。
+            </p>
+          </div>
+        </section>
+
+        <section class="scenario-links" id="home-life" aria-labelledby="home-life-title">
+          <h2 class="visually-hidden" id="home-life-title">家庭场景入口</h2>
+          <a class="scenario-card reveal" href="#child-growth" aria-label="儿童成长陪伴入口">
+            <img src="./public/assets/home/scenarios/child-growth.png" alt="" />
+            <span class="scenario-card__index">01</span>
+            <span class="scenario-card__copy">
+              <strong>儿童成长陪伴入口</strong>
+              <small>面向儿童成长场景，让陪伴、互动与探索在日常生活中自然发生。</small>
+            </span>
+          </a>
+          <a class="scenario-card reveal" href="#adult-companion" aria-label="成年生活陪伴入口">
+            <img src="./public/assets/home/scenarios/adult-companion.png" alt="" />
+            <span class="scenario-card__index">02</span>
+            <span class="scenario-card__copy">
+              <strong>成年生活陪伴</strong>
+              <small>面向成年人居家与情绪陪伴需求，提供轻盈、温和、低打扰的日常陪伴体验。</small>
+            </span>
+          </a>
+          <a class="scenario-card reveal" href="#elder-service" aria-label="具身服务机器人入口">
+            <img src="./public/assets/home/scenarios/elder-service.png" alt="" />
+            <span class="scenario-card__index">03</span>
+            <span class="scenario-card__copy">
+              <strong>具身服务机器人</strong>
+              <small>面向老年群体的家庭陪伴与辅助需求，兼顾情感陪伴、互动体验与基础功能支持。</small>
+            </span>
+          </a>
+        </section>
+
+        <section class="education-drive" id="education-drive" aria-labelledby="education-drive-title">
+          <img class="education-drive__bg" src="./public/assets/home/education/education-bg.png" alt="" />
+          <img class="education-drive__wordmark" src="./public/assets/home/education/dingdong-vertical.png" alt="" />
+
+          <div class="education-drive__inner">
+            <header class="education-drive__heading reveal">
+              <h2 id="education-drive-title">科教 + 陪伴双驱动</h2>
+              <p>的儿童智能产品标杆</p>
+            </header>
+
+            <div class="education-drive__cards" aria-label="科教陪伴能力亮点">
+              <article class="education-card reveal" tabindex="0">
+                <img src="./public/assets/home/education/feature-panel-1.png" alt="" />
+                <div>
+                  <h3>开放式智能底座</h3>
+                  <p>基于 OpenClaw 技术能力，支持机器人灵活操控、动作执行与拓展交互，为后续科教玩法提供底层能力。</p>
+                </div>
+              </article>
+              <article class="education-card reveal" tabindex="0">
+                <img src="./public/assets/home/education/feature-panel-2.png" alt="" />
+                <div>
+                  <h3>真实运动互动</h3>
+                  <p>DingDong 不只是屏幕角色，它可以在空间中移动，与孩子形成更真实的互动关系。</p>
+                </div>
+              </article>
+              <article class="education-card reveal" tabindex="0">
+                <img src="./public/assets/home/education/feature-panel-3.png" alt="" />
+                <div>
+                  <h3>低门槛编程体验</h3>
+                  <p>通过模块化指令，让孩子以更直观的方式理解逻辑、顺序和行为反馈。</p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <footer class="site-footer" id="team" aria-labelledby="footer-title">
+          <img class="site-footer__bg" src="./public/assets/home/footer/footer-bg.png" alt="" />
+          <h2 class="visually-hidden" id="footer-title">网站页脚信息</h2>
+
+          <div class="site-footer__inner">
+            <nav class="footer-links reveal" aria-label="页脚导航">
+              <section>
+                <h3>支持</h3>
+                <a href="#docs">文档中心</a>
+                <a href="#downloads">下载中心</a>
+                <a href="#video">视频中心</a>
+                <a href="#service">售后服务</a>
+                <a href="#knowledge">知识库</a>
+              </section>
+              <section>
+                <h3>新闻</h3>
+                <a href="#products">产品</a>
+                <a href="#press">报道</a>
+                <a href="#events">活动</a>
+                <a href="#more">更多</a>
+              </section>
+              <section>
+                <h3>关于我们</h3>
+                <a href="#about">公司介绍</a>
+                <a href="#tech">核心技术</a>
+                <a href="#investors">投资者关系</a>
+                <a href="#awards">荣誉奖项</a>
+                <a href="#careers">加入我们</a>
+              </section>
+              <section class="footer-contact">
+                <h3>联系我们</h3>
+                <p>联系电话：123123123123</p>
+                <p>官方邮箱：2919145785@qq.com</p>
+                <p>官方微信：Aimaker_</p>
+                <p>公司地址：广东省深圳市南山区南山云谷<br />创新产业园 2 期 3 栋 413</p>
+              </section>
+            </nav>
+
+            <div class="site-footer__divider" aria-hidden="true"></div>
+
+            <div class="site-footer__bottom reveal">
+              <a class="footer-brand" href="#top" aria-label="返回 DingDong 首页">
+                <img src="./public/assets/home/hero/logo-mark-white.png" alt="" />
+                <span>
+                  <strong>DingDong</strong>
+                  <small>RoBo</small>
+                </span>
+              </a>
+              <p>Copyright © 2025 LimX Dynamics Technology Co., Ltd. 粤ICP备2022145040号粤公网安备44030002003539号</p>
+            </div>
+          </div>
+        </footer>
+
+      </main>
+    </div>
+
+    <script type="module" src="./src/scripts/main.js"></script>
+  </body>
+</html>

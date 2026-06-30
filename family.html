@@ -1,0 +1,549 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="DingDong RoBo 家庭场景 - 让 AI 陪伴真正进入家庭日常。"
+    />
+    <title>DingDong RoBo - 家庭</title>
+    <link rel="icon" type="image/png" href="./public/assets/home/hero/logo-mark-white.png" />
+    <link rel="stylesheet" href="./src/styles/main.css" />
+    <style>
+      .family-page {
+        background: #fff;
+      }
+
+      .family-page .site-shell {
+        min-height: 100vh;
+      }
+
+      .family-page .site-header {
+        position: absolute;
+        inset: 0 0 auto;
+        z-index: 20;
+        background: transparent;
+        color: #fff;
+        box-shadow: none;
+      }
+
+      .family-page .site-header.is-scrolled {
+        background: transparent;
+        box-shadow: none;
+        backdrop-filter: none;
+      }
+
+      .family-page .brand,
+      .family-page .site-nav a,
+      .family-page .nav-toggle {
+        color: #fff;
+      }
+
+      .family-page .site-nav a.is-active {
+        border-bottom-color: rgba(255, 255, 255, 0.9);
+      }
+
+      .family-page__hero {
+        position: relative;
+        min-height: min(100vh, 1081px);
+        overflow: hidden;
+        background: #f1efec;
+      }
+
+      .family-page__hero-media {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+
+      .family-page__hero::after {
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(90deg, rgba(247, 245, 243, 0.4) 0%, rgba(247, 245, 243, 0.16) 34%, rgba(247, 245, 243, 0) 68%),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0.02) 42%, rgba(241, 238, 235, 0.18) 100%);
+        content: "";
+        pointer-events: none;
+      }
+
+      .family-page__hero-copy {
+        position: absolute;
+        left: clamp(64px, 6vw, 112px);
+        top: 50%;
+        z-index: 2;
+        width: min(520px, 38vw);
+        transform: translateY(-14%);
+        color: #756b78;
+      }
+
+      .family-page__hero-copy h1 {
+        margin: 0;
+        font-size: clamp(32px, 2.35vw, 54px);
+        line-height: 1.16;
+        font-weight: 700;
+      }
+
+      .family-page__hero-copy p {
+        margin: 10px 0 0;
+        color: rgba(117, 107, 120, 0.82);
+        font-size: clamp(13px, 0.96vw, 18px);
+        line-height: 1.6;
+      }
+
+      .family-page__hero-copy a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        min-width: 142px;
+        min-height: 42px;
+        margin-top: 26px;
+        padding: 0 18px;
+        border-radius: 999px;
+        background: rgba(173, 143, 185, 0.22);
+        color: rgba(120, 100, 130, 0.88);
+        font-size: 13px;
+        backdrop-filter: blur(10px);
+        transition: transform 180ms ease, background 180ms ease;
+      }
+
+      .family-page__hero-copy a:hover,
+      .family-page__hero-copy a:focus-visible {
+        background: rgba(173, 143, 185, 0.3);
+        transform: translateY(-2px);
+        outline: 0;
+      }
+
+      .family-page__hero-copy img {
+        width: 9px;
+        height: 15px;
+      }
+
+      .family-page__intro {
+        min-height: 140px;
+        display: grid;
+        place-items: center;
+        padding: 34px 20px 42px;
+        background: #fff;
+        text-align: center;
+      }
+
+      .family-page__intro h2 {
+        margin: 0;
+        color: #945f90;
+        font-size: clamp(28px, 2.05vw, 42px);
+        line-height: 1.2;
+        font-weight: 600;
+      }
+
+      .family-page__intro p {
+        margin: 10px 0 0;
+        color: rgba(148, 95, 144, 0.82);
+        font-size: clamp(15px, 1.15vw, 21px);
+        line-height: 1.5;
+      }
+
+      .family-page .family-scenarios {
+        margin-bottom: 0;
+      }
+
+      .family-page .family-scenarios .scenario-card {
+        background: #6b4f74;
+      }
+
+      .family-page .family-scenarios .scenario-card img {
+        opacity: 1;
+      }
+
+      .family-page__privacy {
+        padding: clamp(76px, 8vw, 116px) 0 0;
+        background: #fff;
+      }
+
+      .family-page__section-heading {
+        width: min(100%, 880px);
+        margin: 0 auto;
+        padding: 0 24px;
+        text-align: center;
+      }
+
+      .family-page__section-heading h2 {
+        margin: 0;
+        color: #8c628c;
+        font-size: clamp(34px, 3.2vw, 58px);
+        line-height: 1.16;
+        font-weight: 500;
+      }
+
+      .family-page__section-heading p {
+        margin: 18px 0 0;
+        color: rgba(140, 98, 140, 0.82);
+        font-size: clamp(17px, 1.25vw, 23px);
+        line-height: 1.55;
+      }
+
+      .family-privacy-showcase {
+        position: relative;
+        width: min(100%, 1920px);
+        aspect-ratio: 1920 / 1164;
+        margin: clamp(54px, 5.2vw, 84px) auto 0;
+        overflow: hidden;
+        background: #f6f3f1;
+      }
+
+      .family-privacy-showcase__bg,
+      .family-privacy-showcase__graphic {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      .family-privacy-showcase__bg {
+        object-fit: cover;
+      }
+
+      .family-privacy-showcase__graphic {
+        object-fit: contain;
+      }
+
+      .family-page__stages {
+        padding: clamp(90px, 9vw, 138px) 0 clamp(112px, 10vw, 156px);
+        background: #fff;
+      }
+
+      .family-stage-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        align-items: end;
+        gap: clamp(24px, 3vw, 44px);
+        width: min(100%, 1280px);
+        margin: clamp(60px, 6vw, 92px) auto 0;
+        padding: 0 clamp(24px, 3.5vw, 48px);
+      }
+
+      .family-stage-card {
+        position: relative;
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        min-height: 260px;
+        padding: 18px 20px 22px;
+        color: #fff;
+        overflow: hidden;
+        transition: transform 220ms ease, box-shadow 220ms ease;
+      }
+
+      .family-stage-card:hover,
+      .family-stage-card:focus-within {
+        transform: translateY(-6px);
+        box-shadow: 0 28px 60px rgba(107, 78, 125, 0.16);
+      }
+
+      .family-stage-card--child {
+        min-height: clamp(214px, 19vw, 290px);
+        margin-top: clamp(140px, 12vw, 188px);
+        background: #b088c3;
+      }
+
+      .family-stage-card--adult {
+        min-height: clamp(286px, 24vw, 370px);
+        margin-top: clamp(58px, 6vw, 104px);
+        background: #7a5294;
+      }
+
+      .family-stage-card--elder {
+        min-height: clamp(372px, 30vw, 494px);
+        background: #562271;
+      }
+
+      .family-stage-card__content {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        grid-template-columns: auto 1fr;
+        align-items: start;
+        gap: 14px;
+        width: 100%;
+      }
+
+      .family-stage-card__index {
+        font-size: clamp(58px, 5vw, 92px);
+        line-height: 0.9;
+        font-weight: 200;
+        letter-spacing: 0;
+      }
+
+      .family-stage-card__copy strong {
+        display: block;
+        margin-top: 8px;
+        font-size: clamp(20px, 1.95vw, 36px);
+        line-height: 1.28;
+        font-weight: 500;
+      }
+
+      .family-stage-card__copy span {
+        display: block;
+        margin-top: 10px;
+        color: rgba(255, 255, 255, 0.82);
+        font-size: clamp(13px, 0.98vw, 17px);
+        line-height: 1.65;
+      }
+
+      @media (max-width: 720px) {
+        .family-page .site-header {
+          color: #fff;
+        }
+
+        .family-page .site-nav {
+          background: rgba(64, 38, 72, 0.88);
+        }
+
+        .family-page__hero {
+          min-height: 680px;
+        }
+
+        .family-page__hero-media {
+          object-position: 62% center;
+        }
+
+        .family-page__hero::after {
+          background:
+            linear-gradient(180deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.18) 38%, rgba(255, 255, 255, 0) 100%),
+            linear-gradient(90deg, rgba(247, 245, 243, 0.84) 0%, rgba(247, 245, 243, 0.34) 56%, rgba(247, 245, 243, 0) 100%);
+        }
+
+        .family-page__hero-copy {
+          left: 24px;
+          top: 150px;
+          width: min(calc(100% - 48px), 360px);
+          transform: none;
+        }
+
+        .family-page__hero-copy h1 {
+          font-size: clamp(28px, 8vw, 40px);
+        }
+
+        .family-page .family-scenarios {
+          margin-bottom: 56px;
+        }
+
+        .family-privacy-grid,
+        .family-stage-grid {
+          grid-template-columns: 1fr;
+          gap: 20px;
+        }
+
+        .family-privacy-card {
+          min-height: 280px;
+        }
+
+        .family-page__stages {
+          padding-bottom: 88px;
+        }
+
+        .family-stage-grid {
+          margin-top: 42px;
+        }
+
+        .family-stage-card,
+        .family-stage-card--child,
+        .family-stage-card--adult,
+        .family-stage-card--elder {
+          min-height: 240px;
+          margin-top: 0;
+        }
+      }
+    </style>
+  </head>
+  <body class="family-page">
+    <div class="site-shell">
+      <header class="site-header" data-site-header>
+        <a class="brand" href="./index.html#top" aria-label="返回 DingDong RoBo 首页">
+          <img class="brand__mark" src="./public/assets/home/hero/logo-mark-white.png" alt="" />
+          <span class="brand__text">
+            <span>DingDong</span>
+            <img src="./public/assets/home/hero/logo-subtitle-robo.png" alt="RoBo" />
+          </span>
+        </a>
+
+        <button class="nav-toggle" type="button" aria-label="打开导航" aria-expanded="false" data-nav-toggle>
+          <span></span>
+          <span></span>
+        </button>
+
+        <nav class="site-nav" aria-label="主导航" data-site-nav>
+          <a href="./function.html">功能</a>
+          <a class="is-active" href="./family.html">家庭</a>
+          <a href="./resources.html">资源</a>
+          <a href="./team.html">团队</a>
+        </nav>
+      </header>
+
+      <main id="top">
+        <section class="family-page__hero" aria-labelledby="family-title">
+          <img class="family-page__hero-media" src="./public/assets/family/hero/family-hero-bg.png" alt="" />
+          <div class="family-page__hero-copy">
+            <h1 id="family-title">让 AI 陪伴真正进入家庭日常</h1>
+            <p>DingDong 懂孩子、懂家庭、懂和你的每一个场景</p>
+            <a href="#family-scenes">
+              探索家庭场景
+              <img src="./public/assets/family/hero/family-arrow.png" alt="" />
+            </a>
+          </div>
+        </section>
+
+        <section class="family-page__intro" id="family-scenes" aria-labelledby="family-scenes-title">
+          <h2 id="family-scenes-title">家庭场景</h2>
+          <p>懂你所需，在每个日常时刻陪伴你</p>
+        </section>
+
+        <section class="scenario-links family-scenarios" aria-labelledby="family-scenarios-title">
+          <h2 class="visually-hidden" id="family-scenarios-title">家庭场景入口</h2>
+          <a class="scenario-card reveal" href="#family-child" aria-label="儿童成长陪伴入口">
+            <img src="./public/assets/family/scenarios/family-card-1.png" alt="" />
+            <span class="scenario-card__index">01</span>
+            <span class="scenario-card__copy">
+              <strong>儿童成长陪伴入口</strong>
+              <small>面向儿童成长场景，让陪伴、互动与探索在日常生活中自然发生。</small>
+            </span>
+          </a>
+          <a class="scenario-card reveal" href="#family-adult" aria-label="成年生活陪伴入口">
+            <img src="./public/assets/family/scenarios/family-card-2.png" alt="" />
+            <span class="scenario-card__index">02</span>
+            <span class="scenario-card__copy">
+              <strong>成年生活陪伴</strong>
+              <small>面向成年人居家与情绪陪伴需求，提供轻盈、温和、低打扰的日常陪伴体验。</small>
+            </span>
+          </a>
+          <a class="scenario-card reveal" href="#family-service" aria-label="具身服务机器人入口">
+            <img src="./public/assets/family/scenarios/family-card-3.png" alt="" />
+            <span class="scenario-card__index">03</span>
+            <span class="scenario-card__copy">
+              <strong>具身服务机器人</strong>
+              <small>面向老年群体的家庭陪伴与辅助需求，兼顾情感陪伴、互动体验与基础功能支持。</small>
+            </span>
+          </a>
+        </section>
+
+        <section class="family-page__privacy" aria-labelledby="family-privacy-title">
+          <div class="family-page__section-heading reveal">
+            <h2 id="family-privacy-title">守护家人，隐私优先</h2>
+            <p>从设计到实现，全面守护家庭数据安全</p>
+          </div>
+
+          <div class="family-privacy-showcase reveal">
+            <img
+              class="family-privacy-showcase__bg"
+              src="./public/assets/family/privacy/privacy-showcase-bg.png"
+              alt=""
+            />
+            <img
+              class="family-privacy-showcase__graphic"
+              src="./public/assets/family/privacy/privacy-showcase-graphic.png"
+              alt="家庭隐私与安全能力展示图"
+            />
+          </div>
+        </section>
+
+        <section class="family-page__stages" aria-labelledby="family-stages-title">
+          <div class="family-page__section-heading reveal">
+            <h2 id="family-stages-title">陪伴你的每一步</h2>
+            <p>DingDong 伴随你的每一个阶段，不断进化</p>
+          </div>
+
+          <div class="family-stage-grid">
+            <article class="family-stage-card family-stage-card--child reveal" id="family-child">
+              <div class="family-stage-card__content">
+                <span class="family-stage-card__index">01</span>
+                <div class="family-stage-card__copy">
+                  <strong>儿童 | 成长探索</strong>
+                  <span>趣味互动，陪孩子探索世界</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="family-stage-card family-stage-card--adult reveal" id="family-adult">
+              <div class="family-stage-card__content">
+                <span class="family-stage-card__index">02</span>
+                <div class="family-stage-card__copy">
+                  <strong>成人 | 生活共鸣</strong>
+                  <span>日常提醒，陪伴轻松生活</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="family-stage-card family-stage-card--elder reveal" id="family-service">
+              <div class="family-stage-card__content">
+                <span class="family-stage-card__index">03</span>
+                <div class="family-stage-card__copy">
+                  <strong>长辈 | 安心守护</strong>
+                  <span>主动关怀，让家人更安心</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <footer class="site-footer" id="team" aria-labelledby="family-footer-title">
+          <img class="site-footer__bg" src="./public/assets/home/footer/footer-bg.png" alt="" />
+          <h2 class="visually-hidden" id="family-footer-title">网站页脚信息</h2>
+
+          <div class="site-footer__inner">
+            <nav class="footer-links reveal" aria-label="页脚导航">
+              <section>
+                <h3>支持</h3>
+                <a href="#docs">文档中心</a>
+                <a href="#downloads">下载中心</a>
+                <a href="#video">视频中心</a>
+                <a href="#service">售后服务</a>
+                <a href="#knowledge">知识库</a>
+              </section>
+              <section>
+                <h3>新闻</h3>
+                <a href="#products">产品</a>
+                <a href="#press">报道</a>
+                <a href="#events">活动</a>
+                <a href="#more">更多</a>
+              </section>
+              <section>
+                <h3>关于我们</h3>
+                <a href="#about">公司介绍</a>
+                <a href="#tech">核心技术</a>
+                <a href="#investors">投资者关系</a>
+                <a href="#awards">荣誉奖项</a>
+                <a href="#careers">加入我们</a>
+              </section>
+              <section class="footer-contact">
+                <h3>联系我们</h3>
+                <p>联系电话：123123123123</p>
+                <p>官方邮箱：2919145785@qq.com</p>
+                <p>官方微信：Aimaker_</p>
+                <p>公司地址：广东省深圳市南山区南山云谷<br />创新产业园 2 期 3 栋 413</p>
+              </section>
+            </nav>
+
+            <div class="site-footer__divider" aria-hidden="true"></div>
+
+            <div class="site-footer__bottom reveal">
+              <a class="footer-brand" href="#top" aria-label="返回 DingDong 首页">
+                <img src="./public/assets/home/hero/logo-mark-white.png" alt="" />
+                <span>
+                  <strong>DingDong</strong>
+                  <small>RoBo</small>
+                </span>
+              </a>
+              <p>Copyright © 2025 LimX Dynamics Technology Co., Ltd. 粤ICP备2022145040号粤公网安备44030002003539号</p>
+            </div>
+          </div>
+        </footer>
+      </main>
+    </div>
+
+    <script type="module" src="./src/scripts/main.js"></script>
+  </body>
+</html>

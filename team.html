@@ -55,6 +55,7 @@
       .team-hero__bg,
       .team-hero__floor,
       .team-hero__wordmark,
+      .team-hero__glitch,
       .team-hero__robot {
         position: absolute;
         inset: auto;
@@ -84,6 +85,71 @@
         z-index: 2;
       }
 
+      .team-hero__glitch {
+        left: 50%;
+        bottom: clamp(-10px, 1.2vw, 32px);
+        width: min(70vw, 1120px);
+        aspect-ratio: 4364 / 2458;
+        transform: translateX(-50%);
+        z-index: 1;
+        opacity: 0.34;
+        mix-blend-mode: screen;
+        filter: saturate(1.35) contrast(1.08);
+      }
+
+      .team-hero__glitch img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        opacity: 0.42;
+      }
+
+      .team-hero__glitch-base {
+        filter: blur(1px) brightness(1.08);
+        animation: team-glitch-drift 4.8s steps(1, end) infinite;
+      }
+
+      .team-hero__glitch-red {
+        filter: drop-shadow(16px 0 0 rgba(255, 55, 92, 0.88));
+        mix-blend-mode: screen;
+        animation: team-glitch-red 2.9s steps(1, end) infinite;
+      }
+
+      .team-hero__glitch-cyan {
+        filter: drop-shadow(-18px 0 0 rgba(0, 232, 255, 0.86));
+        mix-blend-mode: screen;
+        animation: team-glitch-cyan 3.4s steps(1, end) infinite;
+      }
+
+      .team-hero__glitch::before,
+      .team-hero__glitch::after {
+        position: absolute;
+        inset: 0;
+        content: "";
+        pointer-events: none;
+      }
+
+      .team-hero__glitch::before {
+        background: repeating-linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.22) 0 1px,
+          rgba(255, 255, 255, 0) 1px 8px
+        );
+        opacity: 0.24;
+        mix-blend-mode: screen;
+      }
+
+      .team-hero__glitch::after {
+        background:
+          linear-gradient(90deg, rgba(255, 72, 112, 0), rgba(255, 72, 112, 0.28), rgba(0, 238, 255, 0)),
+          linear-gradient(180deg, transparent 0 42%, rgba(255, 255, 255, 0.34) 42% 44%, transparent 44% 100%);
+        opacity: 0.34;
+        mix-blend-mode: screen;
+        animation: team-glitch-scan 3.2s linear infinite;
+      }
+
       .team-hero__floor {
         left: 50%;
         bottom: 0;
@@ -105,6 +171,36 @@
         content: "";
         pointer-events: none;
         z-index: 0;
+      }
+
+      @keyframes team-glitch-drift {
+        0%, 100% { transform: translate3d(0, 0, 0); opacity: 0.36; }
+        18% { transform: translate3d(10px, -1px, 0); opacity: 0.48; }
+        20% { transform: translate3d(-8px, 1px, 0); opacity: 0.26; }
+        22% { transform: translate3d(0, 0, 0); opacity: 0.42; }
+        64% { transform: translate3d(-12px, 1px, 0); opacity: 0.46; }
+        66% { transform: translate3d(7px, -1px, 0); opacity: 0.32; }
+      }
+
+      @keyframes team-glitch-red {
+        0%, 100% { transform: translate3d(0, 0, 0); opacity: 0.28; clip-path: inset(0 0 0 0); }
+        12% { transform: translate3d(14px, 0, 0); opacity: 0.48; clip-path: inset(12% 0 58% 0); }
+        14% { transform: translate3d(-4px, 1px, 0); opacity: 0.18; clip-path: inset(0 0 0 0); }
+        48% { transform: translate3d(18px, 0, 0); opacity: 0.46; clip-path: inset(52% 0 20% 0); }
+        50% { transform: translate3d(0, 0, 0); opacity: 0.24; clip-path: inset(0 0 0 0); }
+      }
+
+      @keyframes team-glitch-cyan {
+        0%, 100% { transform: translate3d(0, 0, 0); opacity: 0.26; clip-path: inset(0 0 0 0); }
+        28% { transform: translate3d(-16px, 1px, 0); opacity: 0.48; clip-path: inset(24% 0 42% 0); }
+        30% { transform: translate3d(6px, -1px, 0); opacity: 0.2; clip-path: inset(0 0 0 0); }
+        72% { transform: translate3d(-20px, 0, 0); opacity: 0.44; clip-path: inset(62% 0 12% 0); }
+        74% { transform: translate3d(0, 0, 0); opacity: 0.22; clip-path: inset(0 0 0 0); }
+      }
+
+      @keyframes team-glitch-scan {
+        0% { transform: translateY(-18%); }
+        100% { transform: translateY(18%); }
       }
 
       .team-about {
@@ -303,8 +399,19 @@
           bottom: -6px;
         }
 
+        .team-hero__glitch {
+          bottom: 58px;
+          width: min(138vw, 700px);
+          opacity: 0.3;
+        }
+
         .team-hero__floor {
           height: 180px;
+        }
+
+        .team-hero__glitch::before,
+        .team-hero__glitch::after {
+          opacity: 0.2;
         }
 
         .team-about {
@@ -381,6 +488,11 @@
           <img class="team-hero__bg" src="./public/assets/team/hero/team-gradient-bg.png" alt="" />
           <img class="team-hero__wordmark" src="./public/assets/team/hero/team-wordmark.png" alt="" />
           <img class="team-hero__floor" src="./public/assets/team/hero/team-floor.png" alt="" />
+          <div class="team-hero__glitch" aria-hidden="true">
+            <img class="team-hero__glitch-base" src="./public/assets/home/intro/intro-robot-white.png" alt="" />
+            <img class="team-hero__glitch-red" src="./public/assets/home/intro/intro-robot-white.png" alt="" />
+            <img class="team-hero__glitch-cyan" src="./public/assets/home/intro/intro-robot-white.png" alt="" />
+          </div>
           <img class="team-hero__robot" src="./public/assets/team/hero/team-robot.png" alt="DingDong 团队页机器人主视觉" />
         </section>
 
@@ -438,8 +550,6 @@
             <nav class="footer-links reveal" aria-label="页脚导航">
               <section>
                 <h3>支持</h3>
-                <a href="#docs">文档中心</a>
-                <a href="#downloads">下载中心</a>
                 <a href="#video">视频中心</a>
                 <a href="#service">售后服务</a>
                 <a href="#knowledge">知识库</a>
@@ -448,20 +558,16 @@
                 <h3>新闻</h3>
                 <a href="#products">产品</a>
                 <a href="#press">报道</a>
-                <a href="#events">活动</a>
                 <a href="#more">更多</a>
               </section>
               <section>
                 <h3>关于我们</h3>
                 <a href="#about">公司介绍</a>
-                <a href="#tech">核心技术</a>
-                <a href="#investors">投资者关系</a>
                 <a href="#awards">荣誉奖项</a>
                 <a href="#careers">加入我们</a>
               </section>
               <section class="footer-contact">
                 <h3>联系我们</h3>
-                <p>联系电话：123123123123</p>
                 <p>官方邮箱：2919145785@qq.com</p>
                 <p>官方微信：Aimaker_</p>
                 <p>公司地址：广东省深圳市南山区南山云谷<br />创新产业园 2 期 3 栋 413</p>
@@ -478,7 +584,7 @@
                   <small>RoBo</small>
                 </span>
               </a>
-              <p>Copyright © 2025 LimX Dynamics Technology Co., Ltd. 粤ICP备2022145040号粤公网安备44030002003539号</p>
+              <p>Copyright © 2026 Shenzhen Xueer New Technology Development Co., Ltd. 版权所有 | 粤 ICP 备 XXXXXXXX 号 | 粤公网安备 44030002XXXXXX 号</p>
             </div>
           </div>
         </footer>

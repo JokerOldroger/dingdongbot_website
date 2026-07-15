@@ -4,3 +4,5 @@ dist/
 DingDong页面素材 - 无文字版/
 build/icon-source.png
 .vercel
+.env
+.env.local

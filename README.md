@@ -46,6 +46,8 @@ npm run invite:hash -- "你的邀请码"
 
 将输出的第一行配置为 `INVITE_CODE_HASH`，将第二行推荐值中的随机串配置为 `INVITE_SESSION_SECRET`。也可以临时直接配置 `INVITE_CODE`，但不建议长期使用明文邀请码环境变量。
 
+字段模板见 `.env.example`。本地测试可复制为 `.env.local` 后填写；线上部署请在 Vercel 或服务器环境变量面板填写同名字段。
+
 如果部署在自建服务器或 Nginx 后面，应把这层逻辑放在反向代理或后端网关中；不要只用前端 JavaScript 校验邀请码，因为静态资源仍然可以被绕过访问。
 
 ### Electron 桌面预览

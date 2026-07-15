@@ -7,6 +7,7 @@
   "scripts": {
     "start": "python3 -m http.server 5173",
     "serve": "python3 -m http.server 5173",
+    "invite:hash": "node ./scripts/hash-invite-code.mjs",
     "icon:win": "node ./build/make-icon.mjs",
     "electron:dev": "npm run icon:win && env -u ELECTRON_RUN_AS_NODE electron .",
     "dist:win": "npm run icon:win && electron-builder --win nsis portable --x64"

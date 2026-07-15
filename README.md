@@ -30,6 +30,24 @@ npm run start
 
 打开 `http://localhost:5173`。
 
+## 域名访问邀请码保护
+
+项目已加入 Vercel 部署层访问门禁：
+
+- `middleware.js` 会拦截除 `/invite.html` 和 `/api/verify-invite` 之外的所有路径。
+- `/api/verify-invite.js` 在服务端校验邀请码，成功后写入 `HttpOnly`、`SameSite=Lax` 的签名会话 Cookie。
+- 未授权用户无法直接访问 HTML、脚本、样式或图片资源，会被重定向到邀请码页。
+
+部署前在 Vercel 项目环境变量中配置：
+
+```bash
+npm run invite:hash -- "你的邀请码"
+```
+
+将输出的第一行配置为 `INVITE_CODE_HASH`，将第二行推荐值中的随机串配置为 `INVITE_SESSION_SECRET`。也可以临时直接配置 `INVITE_CODE`，但不建议长期使用明文邀请码环境变量。
+
+如果部署在自建服务器或 Nginx 后面，应把这层逻辑放在反向代理或后端网关中；不要只用前端 JavaScript 校验邀请码，因为静态资源仍然可以被绕过访问。
+
 ### Electron 桌面预览
 
 先安装依赖：
